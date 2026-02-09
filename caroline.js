@@ -40,6 +40,7 @@ for(let i = 0; i < menuLinks.length; i++) {
     dropdownmenu.appendChild(linkElement);
 }
 
+//Kontrolstruktur - If-else//
 burgermenu.addEventListener("click", function() {
     if(dropdownmenu.classList.contains('open')) {
         // Menuen er åben - luk den
