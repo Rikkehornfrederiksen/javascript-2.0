@@ -115,7 +115,10 @@ section h1 {
 }
 
 
-
+.herosektion{
+background-image: url('billeder/caro.JPG');
+  background-size: cover;
+  background-position: center;}
 
 
  /* Louises del 

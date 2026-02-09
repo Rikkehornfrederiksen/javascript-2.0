@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Min Side</title>
     <link rel="stylesheet" href="stylesheet.css" />
-<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
 
     <script src="sarah.js" defer></script>
     <script src="rikke.js" defer></script>
@@ -28,30 +28,32 @@
     </header>
 
     <main>
+      <section id="hero" class="herosektion"></section>
       <section id="rikke" class="rikkes">
         <h1>Rikke</h1>
       </section>
 
-<section id="louise" class="billet-simulator"
-         data-aos="fade-left"
-         data-aos-duration="2500"
-         data-aos-easing="ease-in-out">
+      <section
+        id="louise"
+        class="billet-simulator"
+        data-aos="fade-left"
+        data-aos-duration="2500"
+        data-aos-easing="ease-in-out"
+      >
+        <h2>Køb billet</h2>
 
-    <h2>Køb billet</h2>
+        <select id="ticketType"></select>
 
-    <select id="ticketType"></select>
+        <div class="controls">
+          <button id="minusBtn">-</button>
+          <span id="antal">0</span>
+          <button id="plusBtn">+</button>
+        </div>
 
-    <div class="controls">
-      <button id="minusBtn">-</button>
-      <span id="antal">0</span>
-      <button id="plusBtn">+</button>
-    </div>
-
-    <p>Total: <span id="total">0</span> kr.</p>
-    <p id="besked"></p>
-    <button id="cartBtn" class="cart-btn">Læg i kurv</button>
-    <p id="cartMessage"></p>
-
+        <p>Total: <span id="total">0</span> kr.</p>
+        <p id="besked"></p>
+        <button id="cartBtn" class="cart-btn">Læg i kurv</button>
+        <p id="cartMessage"></p>
       </section>
 
       <section id="sarah" class="sarahs">
@@ -62,5 +64,3 @@
     <footer></footer>
   </body>
 </html>
-
-
