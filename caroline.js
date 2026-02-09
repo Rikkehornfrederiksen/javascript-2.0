@@ -1,6 +1,7 @@
 //Array med objekter//
 //Hvert element i arrayet er et objekt//
 let menuLinks = [
+    {navn: "Caroline", url: "#caroline"},
     {navn: "Rikke", url: "#rikke"},
     {navn: "Louise", url: "#louise"},
     {navn: "Sarah", url: "#sarah"}
@@ -50,3 +51,13 @@ burgermenu.addEventListener("click", function() {
         dropdownmenu.classList.add('open');
     }
 })
+
+//Library logo//
+anime({
+    targets: '.museum-logo',
+    scale: [0, 1],
+    rotate: [180, 0],
+    opacity: [0, 1],
+    duration: 1500,
+    easing: 'easeOutElastic(1, .6)'
+});
