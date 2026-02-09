@@ -65,7 +65,7 @@ cartBtn.addEventListener("click", function() {
     return;
   }
 
-  cartMessage.textContent = antal + " billet(ter) lagt i kurv";
+  cartMessage.textContent = antal + " billetter lagt i kurv";
 });
 
   function opdaterTotal() {
