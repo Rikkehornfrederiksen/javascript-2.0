@@ -239,4 +239,10 @@ button:disabled {
   font-size: 14px;
 }
 
+.baggrundsbillede {
+  background-image: url("bus.png");
+  background-size: cover; 
+  background-position: center; 
 
+  text-decoration: none; 
+}
