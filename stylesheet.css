@@ -48,6 +48,75 @@ nav h1 {
         font-weight: bold;
       }
       
+      /* Burgermenu */
+      
+.menu-wrapper {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.4rem;
+  z-index: 999;
+}
+
+.burger {
+  width: 2rem;
+  color: #ddb982;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 1.375rem;
+  cursor: pointer;
+}
+
+.burger span {
+  height: 0.1875rem;
+  background: #6f5e3f;
+  border-radius: 0.5rem;
+  transition: 0.2s ease;
+}
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 0.4rem 0;
+  border: 0.0625rem solid #ddd;
+  border-radius: 0.375rem;
+  box-shadow: 0 0.25rem 0.875rem rgba(0, 0, 0, 0.1);
+  min-width: 9.375rem;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-0.3125rem);
+  transition: 0.2s ease;
+}
+
+.menu-wrapper:hover .dropdown {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.dropdown a {
+  padding: 0.6rem 1rem;
+  text-decoration: none;
+  color: #111;
+  font-size: 0.95rem;
+  background: #fafafa;
+}
+
+.dropdown a:hover {
+  background: #ddb982;
+}
+
+.menu-wrapper:hover .burger span:nth-child(1) {
+  transform: translateY(0.1875rem);
+}
+.menu-wrapper:hover .burger span:nth-child(3) {
+  transform: translateY(-0.1875rem);
+}
 /* Section styling - hver sektion får sin egen farve */
 section {
     padding: 40px 20px;
