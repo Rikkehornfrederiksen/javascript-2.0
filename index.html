@@ -12,7 +12,6 @@
   </head>
   <body>
     <header>
-      <h1>caroline</h1>
       <nav class="menu-wrapper">
         <div class="burger">
           <span></span>
@@ -29,8 +28,26 @@
         <h1>Rikke</h1>
       </section>
 
-      <section id="louise" class="louises">
-        <h1>Louise</h1>
+      <section id="louise" class="billet-simulator"
+         data-aos="fade-left"
+         data-aos-duration="2500"
+         data-aos-easing="ease-in-out">
+
+    <h2>Køb billet</h2>
+
+    <select id="ticketType"></select>
+
+    <div class="controls">
+      <button id="minusBtn">-</button>
+      <span id="antal">0</span>
+      <button id="plusBtn">+</button>
+    </div>
+
+    <p>Total: <span id="total">0</span> kr.</p>
+    <p id="besked"></p>
+    <button id="cartBtn" class="cart-btn">Læg i kurv</button>
+    <p id="cartMessage"></p>
+
       </section>
 
       <section id="sarah" class="sarahs">
@@ -41,3 +58,5 @@
     <footer></footer>
   </body>
 </html>
+
+

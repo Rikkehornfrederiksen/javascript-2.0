@@ -15,7 +15,7 @@ body {
 
 /* Navigation styling */
 nav {
-    background-color: rgb(70, 130, 180);
+
     padding: 20px;
     color: rgb(255, 255, 255);
 }
@@ -147,7 +147,7 @@ body {
 
 /* BILLET KORT */
 
-#billet-simulator {
+.billet-simulator {
   background: rgba(255, 255, 255, 0.50);
   backdrop-filter: blur(14px);
   padding: 50px 40px;
