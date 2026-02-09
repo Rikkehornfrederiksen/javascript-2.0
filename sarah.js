@@ -3,12 +3,12 @@ console.log("Test");
 
 // ARRAY MED UDSTILLINGER + OBJEKTER
 let udstillinger = [
-    { titel: "OVARTACI", billede: "../Min kode/billeder/ovartacicoverbillede.jpg", tekst: "Indtil 01.03.2026" },
-    { titel: "HUSKMITNAVN", billede: "../Min kode/billeder/huskmitnavn.jpg", tekst: "Indtil 30.12.2026" },
-    { titel: "DEN FANTASTISKE BUS", billede: "../Min kode/billeder/denfantastiskebus.jpg", tekst: "Indtil 18.10.2026" },
-    { titel: "CATHIE PILKINGTON", billede: "../Min kode/billeder/cathie.jpg", tekst: "Indtil 06.04.2026" },
-    { titel: "H.A. BRENDEKILDE", billede: "../Min kode/billeder/brendekilde.jpg", tekst: "Indtil 22.02.2026" },
-    { titel: "SAMLINGEN", billede: "../Min kode/billeder/samlingen.jpg", tekst: "PERMANENT UDSTILLING" }
+    { titel: "OVARTACI", billede: "billeder/ovartacicoverbillede.jpg", tekst: "Indtil 01.03.2026" },
+    { titel: "HUSKMITNAVN", billede: "billeder/huskmitnavn.jpg", tekst: "Indtil 30.12.2026" },
+    { titel: "DEN FANTASTISKE BUS", billede: "billeder/denfantastiskebus.jpg", tekst: "Indtil 18.10.2026" },
+    { titel: "CATHIE PILKINGTON", billede: "billeder/cathie.jpg", tekst: "Indtil 06.04.2026" },
+    { titel: "H.A. BRENDEKILDE", billede: "billeder/brendekilde.j", tekst: "Indtil 22.02.2026" },
+    { titel: "SAMLINGEN", billede: "billeder/samlingen.jpg", tekst: "PERMANENT UDSTILLING" }
 ];
 
 // VARIABLER + SCOPE
@@ -100,7 +100,6 @@ function rykVenstre() {
   opdaterGalleri();
 }
 
-// START PROGRAMMET EFTER SIDEN ER LOAD'ET
 window.addEventListener("load", function () {
 
   // Først opret galleri dynamisk
@@ -110,4 +109,11 @@ window.addEventListener("load", function () {
   billedeBredde = document.querySelector(".galleri-item").offsetWidth + 20;
 
   beregnMaxPosition();
+
+  // TILFØJ DISSE FIRE NYE LINJER HER:
+  let venstreKnap = document.querySelector("#venstre-knap");
+  let hoejreKnap = document.querySelector("#hoejre-knap");
+  
+  venstreKnap.addEventListener("click", rykVenstre);
+  hoejreKnap.addEventListener("click", rykHoejre);
 });
