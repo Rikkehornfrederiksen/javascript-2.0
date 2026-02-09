@@ -18,6 +18,7 @@ let position = 0;           // Hvor langt galleriet er rykket
 let billedeBredde;          // Beregnes dynamisk efter load
 let maxPosition = 0;        // Beregnes dynamisk
 
+opretGalleri();
 
 // FUNKTIONER + EVENTS + LOOPS
 function opretGalleri() {
