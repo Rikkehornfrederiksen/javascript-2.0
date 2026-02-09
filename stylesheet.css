@@ -1,11 +1,52 @@
-/* Reset */
+/* Standard reset og box-sizing */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-h1,
-h2 {
-  font-family: var(--font-heading);
-  font-weight: 300;
+
+/* Body styling */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: rgb(240, 240, 240);
+    color: rgb(33, 33, 33);
+}
+
+/* Navigation styling */
+nav {
+    background-color: rgb(70, 130, 180);
+    padding: 20px;
+    color: rgb(255, 255, 255);
+}
+
+nav h1 {
+    font-size: 2rem;
+}
+
+/* Section styling - hver sektion får sin egen farve */
+section {
+    padding: 40px 20px;
+    min-height: 300px;
+}
+
+section:nth-child(2) {
+    background-color: rgb(255, 182, 193);
+    color: rgb(50, 50, 50);
+}
+
+section:nth-child(3) {
+    background-color: rgb(173, 216, 230);
+    color: rgb(50, 50, 50);
+}
+
+section:nth-child(4) {
+    background-color: rgb(221, 160, 221);
+    color: rgb(50, 50, 50);
+}
+
+/* Overskrifter i sektioner */
+section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
 }
