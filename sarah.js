@@ -1,33 +1,57 @@
 // DEBUGGING
 console.log("Test"); 
 
-
-// DOM-MANIPULATION
-const billeder = document.querySelectorAll("#galleriTrack img");
-
-
-// ARRAYS + OBJEKTER
-let udstillinger = Array.from(billeder).map(img => ({
-  titel: img.alt,
-  billede: img.src
-}));
-
+// ARRAY MED UDSTILLINGER + OBJEKTER
+let udstillinger = [
+    { titel: "OVARTACI", billede: "../Min kode/billeder/ovartacicoverbillede.jpg", tekst: "Indtil 01.03.2026" },
+    { titel: "HUSKMITNAVN", billede: "../Min kode/billeder/huskmitnavn.jpg", tekst: "Indtil 30.12.2026" },
+    { titel: "DEN FANTASTISKE BUS", billede: "../Min kode/billeder/denfantastiskebus.jpg", tekst: "Indtil 18.10.2026" },
+    { titel: "CATHIE PILKINGTON", billede: "../Min kode/billeder/cathie.jpg", tekst: "Indtil 06.04.2026" },
+    { titel: "H.A. BRENDEKILDE", billede: "../Min kode/billeder/brendekilde.jpg", tekst: "Indtil 22.02.2026" },
+    { titel: "SAMLINGEN", billede: "../Min kode/billeder/samlingen.jpg", tekst: "PERMANENT UDSTILLING" }
+];
 
 // VARIABLER + SCOPE
 let position = 0;           // Hvor langt galleriet er rykket
 let billedeBredde;          // Beregnes dynamisk efter load
 let maxPosition = 0;        // Beregnes dynamisk
 
-
-// FUNKTIONER + EVENTS + LOOPS
+// FUNKTION: OPRET GALLERI DYNAMISK
 function opretGalleri() {
-  billeder.forEach((img, index) => {
-    img.addEventListener("click", function () {
-      alert("Du har klikket på: " + udstillinger[index].titel);
-    });
-  });
-}
+    const track = document.querySelector("#galleriTrack");
 
+    // Første gang: fjern gamle billeder
+    track.innerHTML = "";
+
+    // Opret alle gallerielementer
+    udstillinger.forEach((udstilling, index) => {
+        const item = document.createElement("div");
+        item.classList.add("galleri-item");
+
+        const img = document.createElement("img");
+        img.src = udstilling.billede;
+        img.alt = udstilling.titel;
+
+        const h2 = document.createElement("h2");
+        h2.classList.add("galleri-overskrift");
+        h2.textContent = udstilling.titel;
+
+        const p = document.createElement("p");
+        p.classList.add("galleri-tekst");
+        p.textContent = udstilling.tekst;
+
+        // Klik-event
+        img.addEventListener("click", () => {
+            alert("Du har klikket på: " + udstilling.titel);
+        });
+
+        // Tilføj elementer til track
+        item.appendChild(img);
+        item.appendChild(h2);
+        item.appendChild(p);
+        track.appendChild(item);
+    });
+}
 
 // BEREGN MAKSIMAL POSITION (så man ikke kan rykke for langt)
 function beregnMaxPosition() {
@@ -40,7 +64,6 @@ function beregnMaxPosition() {
   // Hvor mange "steps" kan vi rykke?
   maxPosition = Math.ceil((trackBredde - viewportBredde) / billedeBredde);
 }
-
 
 // FLYT GALLERIET (med præcis stop ved sidste billede)
 function opdaterGalleri() {
@@ -62,7 +85,6 @@ function opdaterGalleri() {
   console.log("Position:", position);
 }
 
-
 // KONTROLSTRUKTUR
 function rykHoejre() {
   if (position < maxPosition) {
@@ -78,13 +100,14 @@ function rykVenstre() {
   opdaterGalleri();
 }
 
-
 // START PROGRAMMET EFTER SIDEN ER LOAD'ET
 window.addEventListener("load", function () {
+
+  // Først opret galleri dynamisk
+  opretGalleri();
 
   // Dynamisk bredde (offsetWidth virker først efter load)
   billedeBredde = document.querySelector(".galleri-item").offsetWidth + 20;
 
-  opretGalleri();
   beregnMaxPosition();
 });
