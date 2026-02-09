@@ -234,3 +234,84 @@ button:disabled {
 
   text-decoration: none; 
 }
+
+
+
+
+ /* Sarahs del */
+
+ /* Overordnet sektion */
+.galleri-section {
+  background-color: #f4a9bb;
+  padding: 40px;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center alt indhold */
+}
+
+/* Wrapper til hele galleriet */
+.galleri-wrapper {
+  display: flex;
+  flex-direction: column; /* Stack elementer lodret */
+  width: 100%;
+  max-width: 1200px;      /* Samme bredde som overskrift / layout */
+  gap: 10px;              /* Afstand mellem knapper og galleriet */
+}
+
+/* Knapper container */
+.galleri-knapper {
+  display: flex;
+  gap: 10px;              
+  justify-content: flex-end; /* Flyt knapperne til højre */
+  width: 100%;
+}
+
+/* Knapper styling */
+.galleri-knapper button {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Synligt område */
+.galleri-viewport {
+  width: 100%;             /* Fylder hele wrapper */
+  overflow: hidden;
+}
+
+/* Track som bevæger sig */
+.galleri-track {
+  display: flex;
+  gap: 20px;              /* Afstand mellem billederne */
+  transition: transform 0.5s ease;
+}
+
+/* Hvert billede + tekst som en blok */
+.galleri-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 0 0 auto;        /* fast bredde for hvert item */
+  max-width: 400px;       /* <-- her bestemmes billedets bredde */
+}
+
+/* Billeder */
+.galleri-item img {
+  width: 100%; /* fylder hele containeren */
+  height: auto;
+  display: block;
+}
+
+/* Tekst under billedet */
+.galleri-overskrift {
+  margin-top: 20px;        /* lidt luft mellem billede og tekst */
+  font-size: 24px;
+  color: #000;
+  text-align: left;        /* venstrejusteret */
+}
+
+.galleri-tekst {
+  font-size: 16px;
+  color: #000;
+  text-align: left;        /* venstrejusteret */
+}
