@@ -69,7 +69,7 @@ nav h1 {
   transition: 0.2s ease;
 }
 
-.menu-wrapper:hover .dropdown {
+.dropdown.open {
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
@@ -87,12 +87,6 @@ nav h1 {
   background: #ddb982;
 }
 
-.menu-wrapper:hover .burger span:nth-child(1) {
-  transform: translateY(0.1875rem);
-}
-.menu-wrapper:hover .burger span:nth-child(3) {
-  transform: translateY(-0.1875rem);
-}
 /* Section styling - hver sektion får sin egen farve */
 section {
     padding: 40px 20px;
