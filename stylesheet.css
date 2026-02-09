@@ -24,6 +24,30 @@ nav h1 {
     font-size: 2rem;
 }
 
+      /* Custom cursor - den cirkel der følger musen */
+      .cursor {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: white;
+        position: fixed;
+        pointer-events: none; /* Så den ikke blokerer for klik */
+        z-index: 9999;
+        /* Dette er den vigtige del - mix-blend-mode */
+        mix-blend-mode: difference;
+        transform: translate(-50%, -50%);
+        transition:
+          width 0.2s,
+          height 0.2s;
+      }
+
+      /* Når vi hover over links, gør cursor større */
+      a {
+        color: #0066cc;
+        text-decoration: underline;
+        font-weight: bold;
+      }
+      
 /* Section styling - hver sektion får sin egen farve */
 section {
     padding: 40px 20px;
