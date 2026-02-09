@@ -5,13 +5,7 @@
     box-sizing: border-box;
 }
 
-/* Body styling */
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    background-color: rgb(240, 240, 240);
-    color: rgb(33, 33, 33);
-}
+
 
 /* Navigation styling */
 nav {
@@ -116,38 +110,29 @@ section h1 {
 
 
 .herosektion{
-background-image: url('billeder/caro.JPG');
-  background-size: cover;
-  background-position: center;}
+background-image: url('billeder/hero-billede.avif');
+background-size:cover;
+background-position: center;
+background-repeat: no-repeat;
+min-height: 100vh;}
 
 
- /* Louises del 
+ /* Louises del */
 
- /* RESET / BASE */
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  font-family: "Georgia", serif;
-
-  background:linear-gradient(rgba(15, 23, 42, 0.2), rgba(15, 23, 42, 0.3)),
-  url("img/bus.png");
-
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-
-  display: flex;
-  justify-content: flex-end;  /* rykker boksen til højre */
-  align-items: center;
-
-  padding-right: 80px;        /* luft fra kanten */
-  color: #f8fafc;
+.billet-sektion {
+    min-height: 100vh;
+    background: linear-gradient(rgba(15, 23, 42, 0.2), rgba(15, 23, 42, 0.3)),
+                url("billeder/bus.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 80px;
+    color: #f8fafc;
 }
-
-
-
-
 /* BILLET KORT */
 
 .billet-simulator {
