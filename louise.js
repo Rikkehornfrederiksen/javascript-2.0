@@ -61,7 +61,7 @@ let billetter = [
 cartBtn.addEventListener("click", function() {
 
   if (antal === 0) {
-    cartMessage.textContent = "Du skal vælge mindst 1 billet.";
+    cartMessage.textContent = "Du skal vælge mindst 1 billet";
     return;
   }
 
