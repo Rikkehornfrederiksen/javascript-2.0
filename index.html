@@ -57,59 +57,31 @@
         <p id="cartMessage"></p>
       </section>
 
+
+<!-- HOVEDSEKTION FOR GALLERIET -->
       <section id="sarah" class="galleri-section">
 
+<!-- BEHOLDER TIL GALLERIET -->
+<!-- Holder hele galleriet sammen (billeder + knapper) -->
+<div class="galleri-wrapper">
 
-    <!-- Galleri -->
-     <div class="galleri-wrapper">
-    
-    <!-- Knapper over galleriet -->
+<!-- KNAPPER TIL AT NAVIGERE GALLERIET -->
     <div class="galleri-knapper">
-    <button onclick="rykVenstre()">&#10094;</button>
-    <button onclick="rykHoejre()">&#10095;</button>
-    </div>
+        <button id="knapVenstre">&#10094;</button>
+        <button id="knapHoejre">&#10095;</button>
 
+     </div>
 
-    <!-- Tre billeder vises -->
-     <div class="galleri-viewport">
+<!-- SYNLIGT OMRÅDE HVOR BILLEDER VISES -->
+ <div class="galleri-viewport">
 
-    <!-- Track flyttes med JavaScript -->
+<!-- TRACK FLYTTES MED JAVASCRIPT -->
+<!-- Galleriet forskydes vandret for at vise forskellige billeder i galleriet -->
 <div class="galleri-track" id="galleriTrack">
-  <div class="galleri-item">
-    <img src="../javascript-2.0/billeder/ovartacicoverbillede.jpg" alt="OVARTACI">
-    <h2 class="galleri-overskrift">OVARTACI</h2>
-    <p class="galleri-tekst">Indtil 01.03.2026</p>
-  </div>
-  <div class="galleri-item">
-    <img src="../javascript-2.0/billeder/huskmitnavn.jpg" alt="HUSKMITNAVN">
-    <h2 class="galleri-overskrift">HUSKMITNAVN</h2>
-    <p class="galleri-tekst">Indtil 30.12.2026</p>
-  </div>
-  <div class="galleri-item">
-    <img src="../javascript-2.0/billeder/denfantastiskebus.jpg" alt="DEN FANTASTISKE BUS">
-    <h2 class="galleri-overskrift">DEN FANTASTISKE BUS</h2>
-    <p class="galleri-tekst">Indtil 18.10.2026</p>
-  </div>
-  <div class="galleri-item">
-    <img src="../javascript-2.0/billeder/cathie.jpg" alt="CATHIE PILKINGTON">
-    <h2 class="galleri-overskrift">CATHIE PILKINGTON</h2>
-    <p class="galleri-tekst">Indtil 06.04.2026</p>
-  </div>
-  <div class="galleri-item">
-    <img src="../javascript-2.0/billeder/brendekilde.jpg" alt="H.A. BRENDEKILDE">
-    <h2 class="galleri-overskrift">H.A. BRENDEKILDE</h2>
-    <p class="galleri-tekst">Indtil 22.02.2026</p>
-  </div>
-    <div class="galleri-item">
-    <img src="../javascript-2.0/billeder/samlingen.jpg" alt="SAMLINGEN">
-    <h2 class="galleri-overskrift">SAMLINGEN</h2>
-    <p class="galleri-tekst">PERMANENT UDSTILLING</p>
-  </div>
+<!-- INDHOLD OPRETTES DYNAMISK I JAVASCRIPT -->
 </div>
 
-
         </div>
-            </div>
     </div>
 </section>
     </main>
