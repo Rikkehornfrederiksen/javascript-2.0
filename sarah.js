@@ -1,7 +1,9 @@
 // DEBUGGING
+// Viser brug af console.log til fejlfinding
 console.log("Sarah.js loaded");
 
 // ARRAYS + OBJEKTER
+// Viser et array af objekter
 let udstillinger = [
   {
     titel: "OVARTACI",
@@ -36,11 +38,13 @@ let udstillinger = [
 ];
 
 // VARIABLER + SCOPE
+// Variabler defineres med let, som har blockscope
 let position = 0;
 let billedeBredde;
 let maxPosition = 0;
 
-// FUNKTIONER
+// FUNKTIONER + EVENTS + LOOPS + DOM
+// Denne funktion bruger loop (forEach) og tilføjer events (click) til alle billeder
 function opretGalleri() {
     const track = document.querySelector("#galleriTrack");
     
@@ -70,6 +74,8 @@ function opretGalleri() {
     console.log("Galleri oprettet med", udstillinger.length, "items");
 }
 
+// BEREGN MAKSIMAL POSITION
+// Beregner max position, så galleriet ikke rykker for langt
 function beregnMaxPosition() {
     const track = document.querySelector("#galleriTrack");
     const viewport = document.querySelector(".galleri-viewport");
@@ -87,6 +93,8 @@ function beregnMaxPosition() {
     console.log("MaxPosition beregnet:", maxPosition, "TrackBredde:", trackBredde, "ViewportBredde:", viewportBredde);
 }
 
+// FLYT GALLERIET
+// Funktionen flytter galleriet og stopper ved sidste billede
 function opdaterGalleri() {
     const track = document.querySelector("#galleriTrack");
     const viewport = document.querySelector(".galleri-viewport");
@@ -106,6 +114,8 @@ function opdaterGalleri() {
     console.log("Position:", position, "Forskydning:", forskydning, "MaxScroll:", maxScroll);
 }
 
+// KONTROLSTRUKTUR
+// If-statement kontrolstruktur
 function rykHoejre() {
     if (position < maxPosition) {
         position++;
@@ -120,7 +130,8 @@ function rykVenstre() {
     opdaterGalleri();
 }
 
-// START PROGRAMMET
+// START PROGRAMMET EFTER SIDEN ER LOAD'ET
+// Beskriver hvornår koden starter, hvilket matcher brugen af load event
 window.addEventListener("load", function () {
     console.log("Window loaded - starter galleri");
 
@@ -141,7 +152,7 @@ window.addEventListener("load", function () {
 
         beregnMaxPosition();
 
-        // Tilføj event listeners til knapper
+        // EVENTS - KNAPPER
         const knapVenstre = document.querySelector("#knapVenstre");
         const knapHoejre = document.querySelector("#knapHoejre");
 
