@@ -1,10 +1,7 @@
 // DEBUGGING
-// Viser brug af console.log til fejlfinding
-console.log("Test");
-
+console.log("Sarah.js loaded");
 
 // ARRAYS + OBJEKTER
-// Viser et array af objekter
 let udstillinger = [
   {
     titel: "OVARTACI",
@@ -38,111 +35,122 @@ let udstillinger = [
   }
 ];
 
-
 // VARIABLER + SCOPE
-// Variabler defineres med let, som har blockscope
-let position = 0;           // Hvor langt galleriet er rykket
-let billedeBredde;          // Beregnes dynamisk efter load
-let maxPosition = 0;        // Beregnes dynamisk
+let position = 0;
+let billedeBredde;
+let maxPosition = 0;
 
-
-// FUNKTIONER + EVENTS + LOOPS + DOM
-// Denne funktion bruger loop (forEach) og tilføjer events (click) til alle billeder
+// FUNKTIONER
 function opretGalleri() {
     const track = document.querySelector("#galleriTrack");
+    
+    // Tjek om elementet findes
+    if (!track) {
+        console.error("Kunne ikke finde #galleriTrack");
+        return;
+    }
 
     udstillinger.forEach((udstilling, index) => {
+        const item = document.createElement("div");
+        item.classList.add("galleri-item");
 
-    const item = document.createElement("div");
-    item.classList.add("galleri-item");
+        item.innerHTML = `
+            <img src="${udstilling.billede}" alt="${udstilling.titel}">
+            <h2 class="galleri-overskrift">${udstilling.titel}</h2>
+            <p class="galleri-tekst">${udstilling.dato}</p>
+        `;
 
-    item.innerHTML = `
-        <img src="${udstilling.billede}" alt="${udstilling.titel}">
-        <h2 class="galleri-overskrift">${udstilling.titel}</h2>
-        <p class="galleri-tekst">${udstilling.dato}</p>
-    `;
+        item.querySelector("img").addEventListener("click", function () {
+            alert("Du har klikket på: " + udstillinger[index].titel);
+        });
 
-    item.querySelector("img").addEventListener("click", function () {
-        alert("Du har klikket på: " + udstillinger[index].titel);
+        track.appendChild(item);
     });
-
-    track.appendChild(item);
-  });
+    
+    console.log("Galleri oprettet med", udstillinger.length, "items");
 }
 
-
-// BEREGN MAKSIMAL POSITION
-// Beregner max position, så galleriet ikke rykker for langt
 function beregnMaxPosition() {
     const track = document.querySelector("#galleriTrack");
     const viewport = document.querySelector(".galleri-viewport");
 
-    const trackBredde = track.scrollWidth;       // total bredde af alle items
-    const viewportBredde = viewport.clientWidth; // synlig bredde
+    if (!track || !viewport) {
+        console.error("Kunne ikke finde galleri elementer");
+        return;
+    }
 
-    maxPosition = Math.ceil((track.scrollWidth - viewport.clientWidth) / billedeBredde);
+    const trackBredde = track.scrollWidth;
+    const viewportBredde = viewport.clientWidth;
+
+    maxPosition = Math.ceil((trackBredde - viewportBredde) / billedeBredde);
+    
+    console.log("MaxPosition beregnet:", maxPosition, "TrackBredde:", trackBredde, "ViewportBredde:", viewportBredde);
 }
 
-
-// FLYT GALLERIET
-// Funktionen flytter galleriet og stopper ved sidste billede
 function opdaterGalleri() {
     const track = document.querySelector("#galleriTrack");
     const viewport = document.querySelector(".galleri-viewport");
 
-    // Standard forskydning
-    let forskydning = -position * billedeBredde;
+    if (!track || !viewport) return;
 
-    // Beregn maksimal scroll i pixels
+    let forskydning = -position * billedeBredde;
     const maxScroll = track.scrollWidth - viewport.clientWidth;
 
-    // Hvis vi er for langt, justér så galleri stopper præcist
-    if (-forskydning > maxScroll) {
-    forskydning = -maxScroll;
+    // Begræns forskydning
+    if (Math.abs(forskydning) > maxScroll) {
+        forskydning = -maxScroll;
     }
 
-    track.style.transform = "translateX(" + forskydning + "px)";
-    console.log("Position:", position);
+    track.style.transform = `translate3d(${forskydning}px, 0, 0)`;
+    
+    console.log("Position:", position, "Forskydning:", forskydning, "MaxScroll:", maxScroll);
 }
 
-
-// KONTROLSTRUKTUR
-// If-statement kontrolstruktur
 function rykHoejre() {
-  if (position < maxPosition) {
-    position++;
-  }
-  opdaterGalleri();
+    if (position < maxPosition) {
+        position++;
+    }
+    opdaterGalleri();
 }
 
 function rykVenstre() {
-  if (position > 0) {
-    position--;
-  }
-  opdaterGalleri();
+    if (position > 0) {
+        position--;
+    }
+    opdaterGalleri();
 }
 
-
-// START PROGRAMMET EFTER SIDEN ER LOAD'ET
-// Beskriver hvornår koden starter, hvilket matcher brugen af load event
+// START PROGRAMMET
 window.addEventListener("load", function () {
+    console.log("Window loaded - starter galleri");
 
-    // Opret galleri-indhold først
+    // Opret galleri først
     opretGalleri();
 
-    // Dynamisk bredde (offsetWidth virker først efter load)
-    billedeBredde = document.querySelector(".galleri-item").offsetWidth + 20;
+    // Vent lidt for at sikre alle billeder er loadet
+    setTimeout(function() {
+        const firstItem = document.querySelector(".galleri-item");
+        
+        if (!firstItem) {
+            console.error("Ingen galleri-items fundet");
+            return;
+        }
 
-    beregnMaxPosition();
+        billedeBredde = firstItem.offsetWidth + 20;
+        console.log("BilledeBredde:", billedeBredde);
 
+        beregnMaxPosition();
 
-// EVENTS - KNAPPER
-document
-    .querySelector("#knapVenstre")
-    .addEventListener("click", rykVenstre);
+        // Tilføj event listeners til knapper
+        const knapVenstre = document.querySelector("#knapVenstre");
+        const knapHoejre = document.querySelector("#knapHoejre");
 
-document
-    .querySelector("#knapHoejre")
-    .addEventListener("click", rykHoejre);
-
+        if (knapVenstre && knapHoejre) {
+            knapVenstre.addEventListener("click", rykVenstre);
+            knapHoejre.addEventListener("click", rykHoejre);
+            console.log("Knapper tilsluttet");
+        } else {
+            console.error("Kunne ikke finde knapper");
+        }
+    }, 100);
 });
