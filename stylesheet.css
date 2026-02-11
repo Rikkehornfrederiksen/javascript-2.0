@@ -319,3 +319,66 @@ button:disabled {
   color: #000;
   text-align: left;
 }
+
+/*Rikkes del*/
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: center;
+    padding: 50px;
+    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+    color: #2d5649;
+}
+.content-left {
+    padding: 20px;
+}
+h1 {
+    font-family: Arial, sans-serif;
+    color: #2d5649;
+    font-size: xx-large;
+}
+#tids-oversigt {
+    margin: 20px 0;
+    line-height: 1.6;
+    color: #ffffff;
+}
+.tid-btn {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 1px solid #2d5649;
+    background:  #2d5649;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.tid-btn:hover {
+    background: rgb(255, 182, 193);
+    color: black;  
+}
+.image-right {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+.find-rute-btn {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 1px solid #2d5649;
+    background:#2d5649 ;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.find-rute-btn:hover {
+    background: rgb(255, 182, 193);
+    color:black;
+}
+
+@media (max-widht: 648px) {
+    .layout-grid {
+        grid-template-columns: 1fr;
+    }
+    .image img {
+        min-height: 300px;
+    }
+}

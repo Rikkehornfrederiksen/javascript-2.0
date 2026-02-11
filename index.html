@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="stylesheet.css" />
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 
+      <script src="alert.script.js" defer ></script> <!--rikkes library-->
+
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" defer></script>
     <script src="sarah.js" defer></script>
@@ -32,9 +34,43 @@
       <section id="hero" class="herosektion">
       <img src="billeder/brandt-logo.png" alt="Brandts Museum" class="museum-logo">
       </section>
+      
       <section id="rikke" class="rikkes">
-        <h1>Rikke</h1>
+        <!-- <h1>Rikke</h1>   -->
+        
+         <h1> AKTUELLE UDSTILLINGER</h1>
+                <main class="grid-container">
+                <section class="content-left">
+                    <h2 id="display-title">Titlen kommer her</h2>
+        
+                    <div id="velkomst-sektion"></div>
+
+                    <div id="tids-oversigt">
+                        <button class="tid-btn" data-index="0">12:00</button>
+                        <button class="tid-btn" data-index="1">13:00</button>
+                        <button class="tid-btn" data-index="2">14:00</button>
+                        <button class=" tid-btn" data-index="3">15:00</button>
+                        <button class="tid-btn" data-index="4">16:00</button>
+                        <button class="tid-btn" data-index="5">17:00</button>
+                    </div>
+                    
+                    <div id="status-besked"></div>
+
+                    <button class="find-rute-btn">Find rute</button>
+                </section>
+
+            <section class="image-right">
+            <img src="billeder/rikke.img.png" alt="Overtaci billede ">
+            </section>
+              
+           </main>
+      
       </section>
+
+
+
+
+
 
       <section
         id="louise"class="billet-sektion">
