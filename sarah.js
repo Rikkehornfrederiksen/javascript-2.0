@@ -43,12 +43,11 @@ let udstillinger = [
 ];
 
 // VARIABLER + SCOPE
-// Variabler defineres med let, som har blockscope
-// Scroll styres nu i pixels i stedet for position
+// Global variabel til at holde styr på hvor langt galleriet er scrollet
 let scrollX = 0;
 
-// FUNKTIONER + EVENTS + LOOPS + DOM
-// Denne funktion bruger loop (forEach) og tilføjer billeder til galleriet
+// FUNKTIONER + LOOPS + DOM
+// Denne funktion bruger loop (forEach) og opretter galleri-items dynamisk i DOM'en
 function opretGalleri() {
     const track = document.querySelector("#galleriTrack");
     
@@ -58,6 +57,7 @@ function opretGalleri() {
         return;
     }
 
+    // Loop gennem arrayey og opretter et div-element for hvert billede
     udstillinger.forEach((udstilling, index) => {
         const item = document.createElement("div");
         item.classList.add("galleri-item");
@@ -75,16 +75,17 @@ function opretGalleri() {
 }
 
 // FLYT GALLERIET
-// Funktionen flytter galleriet og stopper ved sidste billede
+// Funktionen flytter galleriet horisontalt med scrollX og stopper ved sidste billede
 function opdaterGalleri() {
     const track = document.querySelector("#galleriTrack");
     const viewport = document.querySelector(".galleri-viewport");
 
     if (!track || !viewport) return;
 
+    // Beregner hvor langt vi kan scrolle, uden at gå for langt
     const maxScroll = Math.max(track.scrollWidth - viewport.clientWidth, 0);
 
-    // Begræns scroll så vi aldrig kan gå for langt
+    // Begræns scroll til området [0, maxScroll]
     scrollX = Math.min(scrollX, maxScroll);
     scrollX = Math.max(scrollX, 0);
 
@@ -94,7 +95,7 @@ function opdaterGalleri() {
 }
 
 // KONTROLSTRUKTUR
-// If-statement kontrolstruktur
+// Funktionen scroller galleriet til højre
 function rykHoejre() {
     const viewport = document.querySelector(".galleri-viewport");
 
@@ -104,6 +105,7 @@ function rykHoejre() {
     opdaterGalleri();
 }
 
+// Funktionen scroller galleriet til venstre
 function rykVenstre() {
     const viewport = document.querySelector(".galleri-viewport");
 
