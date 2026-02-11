@@ -16,6 +16,11 @@ let udstillinger = [
     billede: "billeder/huskmitnavn.jpg"
   },
   {
+    titel: "ROSA SEJL",
+    dato: "Indtil 16.08.2026",
+    billede: "billeder/rosasejl.jpg"
+  },
+  {
     titel: "DEN FANTASTISKE BUS",
     dato: "Indtil 18.10.2026",
     billede: "billeder/denfantastiskebus.jpg"
@@ -39,12 +44,11 @@ let udstillinger = [
 
 // VARIABLER + SCOPE
 // Variabler defineres med let, som har blockscope
-let position = 0;
-let billedeBredde;
-let maxPosition = 0;
+// Scroll styres nu i pixels i stedet for position
+let scrollX = 0;
 
 // FUNKTIONER + EVENTS + LOOPS + DOM
-// Denne funktion bruger loop (forEach) og tilføjer events (click) til alle billeder
+// Denne funktion bruger loop (forEach) og tilføjer billeder til galleriet
 function opretGalleri() {
     const track = document.querySelector("#galleriTrack");
     
@@ -64,33 +68,10 @@ function opretGalleri() {
             <p class="galleri-tekst">${udstilling.dato}</p>
         `;
 
-        item.querySelector("img").addEventListener("click", function () {
-            alert("Du har klikket på: " + udstillinger[index].titel);
-        });
-
         track.appendChild(item);
     });
     
     console.log("Galleri oprettet med", udstillinger.length, "items");
-}
-
-// BEREGN MAKSIMAL POSITION
-// Beregner max position, så galleriet ikke rykker for langt
-function beregnMaxPosition() {
-    const track = document.querySelector("#galleriTrack");
-    const viewport = document.querySelector(".galleri-viewport");
-
-    if (!track || !viewport) {
-        console.error("Kunne ikke finde galleri elementer");
-        return;
-    }
-
-    const trackBredde = track.scrollWidth;
-    const viewportBredde = viewport.clientWidth;
-
-    maxPosition = Math.ceil((trackBredde - viewportBredde) / billedeBredde);
-    
-    console.log("MaxPosition beregnet:", maxPosition, "TrackBredde:", trackBredde, "ViewportBredde:", viewportBredde);
 }
 
 // FLYT GALLERIET
@@ -101,32 +82,34 @@ function opdaterGalleri() {
 
     if (!track || !viewport) return;
 
-    let forskydning = -position * billedeBredde;
-    const maxScroll = track.scrollWidth - viewport.clientWidth;
+    const maxScroll = Math.max(track.scrollWidth - viewport.clientWidth, 0);
 
-    // Begræns forskydning
-    if (Math.abs(forskydning) > maxScroll) {
-        forskydning = -maxScroll;
-    }
+    // Begræns scroll så vi aldrig kan gå for langt
+    scrollX = Math.min(scrollX, maxScroll);
+    scrollX = Math.max(scrollX, 0);
 
-    track.style.transform = `translate3d(${forskydning}px, 0, 0)`;
+    track.style.transform = `translateX(${-scrollX}px)`;
     
-    console.log("Position:", position, "Forskydning:", forskydning, "MaxScroll:", maxScroll);
+    console.log("ScrollX:", scrollX, "MaxScroll:", maxScroll);
 }
 
 // KONTROLSTRUKTUR
 // If-statement kontrolstruktur
 function rykHoejre() {
-    if (position < maxPosition) {
-        position++;
-    }
+    const viewport = document.querySelector(".galleri-viewport");
+
+    // Scroll 90% af viewport bredden
+    scrollX += viewport.clientWidth * 0.9;
+
     opdaterGalleri();
 }
 
 function rykVenstre() {
-    if (position > 0) {
-        position--;
-    }
+    const viewport = document.querySelector(".galleri-viewport");
+
+    // Scroll 90% af viewport bredden tilbage
+    scrollX -= viewport.clientWidth * 0.9;
+
     opdaterGalleri();
 }
 
@@ -140,17 +123,6 @@ window.addEventListener("load", function () {
 
     // Vent lidt for at sikre alle billeder er loadet
     setTimeout(function() {
-        const firstItem = document.querySelector(".galleri-item");
-        
-        if (!firstItem) {
-            console.error("Ingen galleri-items fundet");
-            return;
-        }
-
-        billedeBredde = firstItem.offsetWidth + 20;
-        console.log("BilledeBredde:", billedeBredde);
-
-        beregnMaxPosition();
 
         // EVENTS - KNAPPER
         const knapVenstre = document.querySelector("#knapVenstre");
@@ -164,4 +136,11 @@ window.addEventListener("load", function () {
             console.error("Kunne ikke finde knapper");
         }
     }, 100);
+});
+
+// OPDATERER VED RESIZE
+// Sikrer at galleriet fungerer på alle skærmstørrelser
+window.addEventListener("resize", function() {
+    scrollX = 0; // reset scroll ved resize
+    opdaterGalleri();
 });
